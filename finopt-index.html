@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinOpt — Data &amp; AI Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16201D;
+    --bg:#F7F5F0;
+    --bg-raised:#FFFFFF;
+    --teal-deep:#0B2B26;
+    --teal:#11423B;
+    --teal-signal:#1F6F5C;
+    --sage:#C9D6CE;
+    --sage-line: rgba(11,43,38,0.14);
+    --cream-line: rgba(22,32,29,0.10);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--teal-signal); outline-offset:3px; }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--cream-line);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:500; font-size:19px;
+    letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .logo-mark{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--teal-signal);
+    flex-shrink:0;
+  }
+  nav{ display:flex; align-items:center; gap:36px; }
+  nav a{
+    text-decoration:none; font-size:14.5px; color:var(--teal-deep);
+    opacity:0.78;
+  }
+  nav a:hover{ opacity:1; }
+  .nav-links{ display:flex; gap:32px; }
+  @media (max-width:780px){ .nav-links{ display:none; } }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--teal-deep); color:#F7F5F0;
+    padding:11px 20px; border-radius:3px;
+    font-size:14px; font-weight:500;
+    text-decoration:none; white-space:nowrap;
+    border:1px solid var(--teal-deep);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{ background:transparent; color:var(--teal-deep); }
+  .btn-outline{
+    background:transparent; color:var(--teal-deep); border:1px solid var(--sage-line);
+  }
+  .btn-outline:hover{ background:var(--teal-deep); color:#F7F5F0; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:96px 0 64px; position:relative; }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--teal-signal); margin:0 0 22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{
+    content:''; display:block; width:26px; height:1px; background:var(--teal-signal);
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(38px, 5.4vw, 66px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    margin:0 0 28px;
+    max-width:780px;
+  }
+  h1 em{
+    font-style:italic; font-weight:400; color:var(--teal-signal);
+  }
+  .hero-sub{
+    font-size:18px; line-height:1.6;
+    color:var(--ink); opacity:0.78;
+    max-width:520px; margin:0 0 40px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
+
+  /* sparkline signature */
+  .sparkline-wrap{
+    border-top:1px solid var(--sage-line);
+    border-bottom:1px solid var(--sage-line);
+    padding:22px 0;
+    overflow:hidden;
+  }
+  .sparkline-label{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:var(--ink); opacity:0.55; letter-spacing:0.04em;
+  }
+  svg.spark{ display:block; width:100%; height:auto; }
+  .spark-noisy{
+    opacity:1;
+    animation: fadeOutNoisy 1.4s ease forwards;
+    animation-delay: 1.4s;
+  }
+  .spark-clean{
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    opacity:0;
+    animation: drawClean 1.6s ease forwards, fadeInClean 0.1s linear forwards;
+    animation-delay: 1.3s, 1.3s;
+  }
+  @keyframes fadeOutNoisy{ to{ opacity:0; } }
+  @keyframes fadeInClean{ to{ opacity:1; } }
+  @keyframes drawClean{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .spark-noisy{ opacity:0; }
+    .spark-clean{ opacity:1; stroke-dashoffset:0; }
+  }
+
+  /* ---------- section shared ---------- */
+  section{ padding:88px 0; }
+  .section-head{ max-width:620px; margin-bottom:56px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--teal-signal); margin:0 0 14px;
+  }
+  h2{
+    font-family:'Fraunces', serif; font-weight:500;
+    font-size:clamp(28px, 3.2vw, 40px); line-height:1.12; margin:0 0 18px;
+    letter-spacing:-0.005em;
+  }
+  .section-lede{ font-size:16.5px; line-height:1.65; opacity:0.74; margin:0; }
+  .rule{ height:1px; background:var(--sage-line); border:none; margin:0; }
+
+  /* ---------- problems ---------- */
+  .problems{ background:var(--teal-deep); color:#F4F1E9; }
+  .problems .eyebrow{ color:#7FBFA9; }
+  .problems .section-lede{ color:#F4F1E9; opacity:0.68; }
+  .problem-list{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border-top:1px solid rgba(247,245,240,0.16); }
+  @media (max-width:880px){ .problem-list{ grid-template-columns:1fr; } }
+  .problem{
+    padding:34px 28px 34px 0;
+    border-bottom:1px solid rgba(247,245,240,0.16);
+  }
+  .problem-list > .problem:not(:last-child){ border-right:1px solid rgba(247,245,240,0.16); }
+  @media (max-width:880px){ .problem-list > .problem{ border-right:none !important; padding-right:0; } }
+  .problem-num{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:#7FBFA9;
+    margin:0 0 18px;
+  }
+  .problem h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:21px; margin:0 0 12px;
+  }
+  .problem p{ font-size:15px; line-height:1.6; opacity:0.7; margin:0; }
+
+  /* ---------- solutions ---------- */
+  .solutions-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--sage-line);
+    border:1px solid var(--sage-line);
+  }
+  @media (max-width:880px){ .solutions-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .solutions-grid{ grid-template-columns:1fr; } }
+  .solution{
+    background:var(--bg-raised);
+    padding:32px 28px;
+    transition:background 0.15s ease;
+  }
+  .solution:hover{ background:#FBFAF7; }
+  .solution-icon{
+    width:34px; height:34px; margin-bottom:20px;
+    color:var(--teal-signal);
+  }
+  .solution h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:18px; margin:0 0 10px;
+  }
+  .solution p{ font-size:14.5px; line-height:1.6; opacity:0.7; margin:0; }
+
+  /* ---------- approach ---------- */
+  .approach{ background:var(--bg-raised); border-top:1px solid var(--cream-line); border-bottom:1px solid var(--cream-line); }
+  .approach-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start; }
+  @media (max-width:880px){ .approach-grid{ grid-template-columns:1fr; gap:40px; } }
+  .approach-steps{ display:flex; flex-direction:column; }
+  .step{
+    display:grid; grid-template-columns:64px 1fr; gap:18px;
+    padding:26px 0;
+    border-top:1px solid var(--cream-line);
+  }
+  .step:first-child{ border-top:none; }
+  .step-mark{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--teal-signal); padding-top:2px; }
+  .step h4{ font-size:16.5px; font-weight:600; margin:0 0 8px; font-family:'IBM Plex Sans', sans-serif; }
+  .step p{ font-size:14.5px; line-height:1.6; opacity:0.72; margin:0; }
+
+  /* ---------- about / proof strip ---------- */
+  .about{ }
+  .about-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start; }
+  @media (max-width:880px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+  .about-card{
+    border:1px solid var(--sage-line);
+    background:var(--bg-raised);
+    padding:30px;
+  }
+  .about-card .mono{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.55; display:block; margin-bottom:18px; }
+  .stat-row{ display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid var(--cream-line); }
+  .stat-row:first-of-type{ border-top:none; }
+  .stat-row .label{ font-size:14px; opacity:0.7; }
+  .stat-row .value{ font-family:'Fraunces', serif; font-size:17px; }
+  .about p{ font-size:16px; line-height:1.7; opacity:0.78; }
+  .about p + p{ margin-top:16px; }
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:var(--teal-deep); color:#F4F1E9;
+    padding:80px 0;
+  }
+  .cta-band-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+  }
+  .cta-band h2{ color:#F4F1E9; max-width:480px; }
+  .cta-band .section-lede{ color:#F4F1E9; opacity:0.68; max-width:420px; }
+  .cta-band .btn{ background:#F4F1E9; color:var(--teal-deep); border-color:#F4F1E9; }
+  .cta-band .btn:hover{ background:transparent; color:#F4F1E9; }
+
+  /* ---------- footer ---------- */
+  footer{ padding:48px 0 40px; }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-size:13.5px; opacity:0.6;
+  }
+  .footer-inner a{ text-decoration:none; }
+  .footer-links{ display:flex; gap:24px; }
+
+  /* ---------- contact modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(11,43,38,0.55);
+    backdrop-filter:blur(3px);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    opacity:0; visibility:hidden;
+    transition:opacity 0.2s ease, visibility 0.2s ease;
+  }
+  .modal-overlay.is-open{ opacity:1; visibility:visible; }
+  .modal{
+    background:var(--bg-raised);
+    width:100%; max-width:560px;
+    max-height:90vh; overflow-y:auto;
+    border-radius:4px;
+    padding:40px;
+    position:relative;
+    transform:translateY(12px) scale(0.98);
+    transition:transform 0.2s ease;
+  }
+  .modal-overlay.is-open .modal{ transform:translateY(0) scale(1); }
+  @media (max-width:560px){ .modal{ padding:28px 22px; } }
+
+  .modal-close{
+    position:absolute; top:18px; right:18px;
+    width:32px; height:32px; border-radius:50%;
+    border:1px solid var(--sage-line); background:transparent;
+    color:var(--teal-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; line-height:1; padding:0;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .modal-close:hover{ background:var(--teal-deep); color:#F7F5F0; }
+
+  .modal .eyebrow{ margin-bottom:10px; }
+  .modal h3{
+    font-family:'Fraunces', serif; font-weight:500; font-size:26px;
+    margin:0 0 10px; padding-right:30px;
+  }
+  .modal-intro{ font-size:14.5px; line-height:1.6; opacity:0.7; margin:0 0 28px; }
+
+  .form-row{ margin-bottom:18px; }
+  .form-row-pair{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:460px){ .form-row-pair{ grid-template-columns:1fr; } }
+  label{
+    display:block; font-size:13px; font-weight:500; color:var(--teal-deep);
+    margin-bottom:7px;
+  }
+  label .optional{ opacity:0.5; font-weight:400; }
+  input[type="text"], input[type="email"], input[type="tel"], textarea{
+    width:100%; font-family:'IBM Plex Sans', sans-serif; font-size:14.5px;
+    padding:11px 13px; border:1px solid var(--sage-line); border-radius:3px;
+    background:var(--bg); color:var(--ink);
+    transition:border-color 0.15s ease;
+  }
+  input:focus, textarea:focus{
+    outline:none; border-color:var(--teal-signal);
+  }
+  textarea{ resize:vertical; min-height:90px; font-family:'IBM Plex Sans', sans-serif; }
+
+  .form-submit{
+    width:100%; justify-content:center; cursor:pointer;
+    margin-top:6px; font-size:14.5px; padding:13px 20px;
+  }
+
+  .modal-divider{
+    display:flex; align-items:center; gap:14px;
+    margin:26px 0 22px; font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink); opacity:0.45;
+  }
+  .modal-divider::before, .modal-divider::after{
+    content:''; flex:1; height:1px; background:var(--sage-line);
+  }
+  .modal-direct{
+    display:flex; flex-direction:column; gap:10px;
+    font-size:14.5px;
+  }
+  .modal-direct a{
+    text-decoration:none; color:var(--teal-deep); font-weight:500;
+    display:flex; align-items:center; gap:9px;
+  }
+  .modal-direct a:hover{ color:var(--teal-signal); }
+  .modal-direct svg{ width:16px; height:16px; flex-shrink:0; opacity:0.7; }
+
+  .form-status{
+    font-size:14px; margin-top:16px; display:none;
+    padding:12px 14px; border-radius:3px;
+  }
+  .form-status.is-success{ display:block; background:#EAF3EE; color:var(--teal-deep); }
+  .form-status.is-error{ display:block; background:#FBEAEA; color:#8A2E2E; }
+
+  ::selection{ background:var(--teal-signal); color:#fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"></span>
+      FinOpt
+    </a>
+    <nav>
+      <div class="nav-links">
+        <a href="#problems">What I solve</a>
+        <a href="#solutions">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+      </div>
+      <button type="button" class="btn" data-open-contact>Book a free consultation</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">Data Analytics &amp; AI Strategy</p>
+      <h1>Turn the data you<br>already have into <em>decisions you can act on.</em></h1>
+      <p class="hero-sub">I help small and mid-sized businesses cut through scattered spreadsheets and disconnected systems to find the handful of numbers that actually drive growth — then build the analytics and AI tools to track them automatically.</p>
+      <div class="hero-ctas">
+        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
+        <a href="#solutions" class="btn btn-outline">See how it works</a>
+      </div>
+
+      <div class="sparkline-wrap">
+        <div class="sparkline-label">
+          <span>RAW SIGNAL → CLEAR STRATEGY</span>
+          <span>12-WEEK VIEW</span>
+        </div>
+        <svg class="spark" viewBox="0 0 1056 110" preserveAspectRatio="none" aria-hidden="true">
+          <polyline class="spark-noisy" points="0,62 30,40 60,78 90,35 120,70 150,30 180,85 210,45 240,68 270,20 300,72 330,50 360,90 390,28 420,60 450,38 480,80 510,42 540,66 570,24 600,76 630,48 660,58 690,33 720,70 750,52 780,20 810,64 840,40 870,74 900,30 930,58 960,46 990,68 1020,36 1056,55"
+            fill="none" stroke="#9FB3AC" stroke-width="1.5"/>
+          <polyline class="spark-clean" points="0,80 96,72 192,66 288,60 384,58 480,48 576,44 672,38 768,30 864,24 960,16 1056,8"
+            fill="none" stroke="#1F6F5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMS -->
+  <section class="problems" id="problems">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Common problems I help solve</p>
+        <h2>Most businesses aren't short on data.<br>They're short on clarity.</h2>
+        <p class="section-lede">You're likely sitting on more information than you've ever had — and still making your biggest calls on gut feel. Here's where that usually shows up.</p>
+      </div>
+
+      <div class="problem-list">
+        <div class="problem">
+          <p class="problem-num">01</p>
+          <h3>Disconnected systems</h3>
+          <p>Sales, finance and operations data live in different tools that don't talk to each other, so no one has a single, trustworthy view of the business.</p>
+        </div>
+        <div class="problem">
+          <p class="problem-num">02</p>
+          <h3>Reporting that looks back, not forward</h3>
+          <p>You can see what happened last month. What's missing is a reliable read on what's about to happen — and what to do about it.</p>
+        </div>
+        <div class="problem">
+          <p class="problem-num">03</p>
+          <h3>No time to dig into it</h3>
+          <p>The insight is probably in there somewhere. But nobody on the team has the hours, or the analytical background, to go and find it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How I help</p>
+        <h2>Practical solutions, built around your business</h2>
+        <p class="section-lede">No off-the-shelf dashboards for the sake of it. Every engagement starts with your specific decisions and works backward to the data and tools that support them.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/></svg>
+          <h3>Data consolidation</h3>
+          <p>Bring your sales, finance and operational data into one reliable source, so every report starts from the same numbers.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9M11 19V5M18 19v-7"/></svg>
+          <h3>Dashboards &amp; reporting</h3>
+          <p>Clear, live views of the metrics that matter to you — built so anyone on your team can read them at a glance.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Forecasting &amp; prediction</h3>
+          <p>Move from "what happened" to "what's likely to happen next" with models tuned to your business, not a generic template.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+          <h3>AI-assisted strategy</h3>
+          <p>Apply AI tools where they genuinely save time or sharpen a decision — pricing, demand, churn, segmentation — not for novelty's sake.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h16v4H4zM4 12h10v4H4zM4 20h7"/></svg>
+          <h3>Data quality &amp; governance</h3>
+          <p>Clean, well-structured, well-documented data, with clear rules for who can access and edit what.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L3 14h7l-1 8 11-12h-7z"/></svg>
+          <h3>Automation</h3>
+          <p>Remove the manual, repetitive reporting work so your time goes into deciding, not compiling spreadsheets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="approach-grid">
+        <div>
+          <p class="eyebrow">My approach</p>
+          <h2>Think big.<br>Start small.<br>Prove it works.</h2>
+          <p class="section-lede">You don't need a year-long transformation programme to get value from your data. You need one well-chosen pilot that proves itself quickly — then a clear path to scale it.</p>
+        </div>
+        <div class="approach-steps">
+          <div class="step">
+            <span class="step-mark mono">01</span>
+            <div>
+              <h4>Understand</h4>
+              <p>We start with a conversation, not a questionnaire — your goals, your decisions, and where your current data and reporting are letting you down.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">02</span>
+            <div>
+              <h4>Pilot</h4>
+              <p>I design and build a small, focused solution aimed at one real business problem, so you see value in weeks, not quarters.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">03</span>
+            <div>
+              <h4>Prove</h4>
+              <p>We review what the pilot found together and agree whether — and how — it should be expanded.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">04</span>
+            <div>
+              <h4>Scale</h4>
+              <p>Once the value is clear, I build the production-ready version: documented, reliable, and handed over so your team can run with it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Ten years turning data into tactical decisions</h2>
+          <p>I work directly with business owners and leadership teams — there's no account manager between you and the person doing the analysis. With over a decade in advanced data analytics and data science, I build tactical solutions using your own data alongside leading-edge market analytics, machine learning and AI.</p>
+          <p>Recent work includes customer retention modelling, pricing optimisation, context analysis, and monthly trend reporting and prediction. A small investment, applied to the right question, can generate a disproportionately large outcome — the sooner you start, the sooner it compounds.</p>
+        </div>
+        <div class="about-card">
+          <span class="mono">At a glance</span>
+          <div class="stat-row"><span class="label">Experience</span><span class="value">10+ years</span></div>
+          <div class="stat-row"><span class="label">Customer retention</span><span class="value">Proven results</span></div>
+          <div class="stat-row"><span class="label">Pricing optimisation</span><span class="value">Proven results</span></div>
+          <div class="stat-row"><span class="label">Trend &amp; forecasting</span><span class="value">Monthly cadence</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA BAND -->
+  <section class="cta-band" id="contact">
+    <div class="wrap cta-band-inner">
+      <div>
+        <p class="eyebrow" style="color:#7FBFA9;">Get started</p>
+        <h2>A small investment can<br>generate a big outcome.</h2>
+        <p class="section-lede">A free, no-obligation 30-minute consultation — we'll look at where your data stands today and what a useful first step could look like. Take action today.</p>
+      </div>
+      <button type="button" class="btn" data-open-contact>Book a free consultation</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 FinOpt</span>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="mailto:finopt_au@gmail.com">Email</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button type="button" class="modal-close" data-close-contact aria-label="Close">&times;</button>
+
+    <p class="eyebrow">Get started</p>
+    <h3 id="contactModalTitle">Book a free consultation</h3>
+    <p class="modal-intro">Tell me a little about your business and what you're hoping to get out of your data. I'll get back to you within one business day.</p>
+
+    <form id="contactForm" action="https://formspree.io/f/meebkzjp" method="POST">
+      <div class="form-row form-row-pair">
+        <div>
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required>
+        </div>
+        <div>
+          <label for="cf-company">Company <span class="optional">(optional)</span></label>
+          <input type="text" id="cf-company" name="company">
+        </div>
+      </div>
+
+      <div class="form-row form-row-pair">
+        <div>
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required>
+        </div>
+        <div>
+          <label for="cf-phone">Phone <span class="optional">(optional)</span></label>
+          <input type="tel" id="cf-phone" name="phone">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="cf-message">What would you like to discuss?</label>
+        <textarea id="cf-message" name="message" required placeholder="A few lines on your business and what you're hoping to find in your data."></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New consultation request — FinOpt website">
+
+      <button type="submit" class="btn form-submit">Send request</button>
+
+      <div class="form-status" id="formStatus"></div>
+    </form>
+
+    <div class="modal-divider">or contact directly</div>
+    <div class="modal-direct">
+      <a href="mailto:finopt_au@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18v14H3z"/><path d="M3 5l9 8 9-8"/></svg>
+        finopt_au@gmail.com
+      </a>
+      <a href="tel:+61426005000">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 2.5a11 11 0 0 0 5 5L16 14l5 2v4a2 2 0 0 1-2 2C10.5 22 2 13.5 2 6a2 2 0 0 1 2-2z"/></svg>
+        0426 005 000
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var overlay = document.getElementById('contactModal');
+    var openTriggers = document.querySelectorAll('[data-open-contact]');
+    var closeTriggers = document.querySelectorAll('[data-close-contact]');
+    var form = document.getElementById('contactForm');
+    var status = document.getElementById('formStatus');
+    var lastFocused = null;
+
+    function openModal(){
+      lastFocused = document.activeElement;
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var firstField = document.getElementById('cf-name');
+      if (firstField) firstField.focus();
+    }
+    function closeModal(){
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    openTriggers.forEach(function(btn){
+      btn.addEventListener('click', openModal);
+    });
+    closeTriggers.forEach(function(btn){
+      btn.addEventListener('click', closeModal);
+    });
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+    });
+
+    if (form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.className = 'form-status';
+        status.textContent = '';
+
+        var formData = new FormData(form);
+        var submitBtn = form.querySelector('.form-submit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(response){
+          if (response.ok){
+            form.reset();
+            status.className = 'form-status is-success';
+            status.textContent = "Thanks — your request has been sent. I'll be in touch within one business day.";
+          } else {
+            status.className = 'form-status is-error';
+            status.textContent = "Something went wrong sending that. Please email finopt_au@gmail.com directly, or call 0426 005 000.";
+          }
+        }).catch(function(){
+          status.className = 'form-status is-error';
+          status.textContent = "Something went wrong sending that. Please email finopt_au@gmail.com directly, or call 0426 005 000.";
+        }).finally(function(){
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send request';
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
