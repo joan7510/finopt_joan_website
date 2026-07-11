@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Summary Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="tool-shell">
+    <header class="tool-header">
+      <p class="eyebrow">Lumen Analytics Sales Tool</p>
+      <h1>Sales Summary Tool</h1>
+      <p class="lede">Upload a CSV or TXT sales file to summarise revenue, identify trends, and forecast the coming months.</p>
+    </header>
+
+    <section class="upload-panel" aria-labelledby="upload-title">
+      <div>
+        <h2 id="upload-title">Upload Sales Data</h2>
+        <p>Accepted formats: <strong>.csv</strong> or <strong>.txt</strong>. The tool looks for date and amount columns automatically.</p>
+      </div>
+      <label class="file-drop" for="fileInput">
+        <span class="file-icon" aria-hidden="true">↑</span>
+        <span id="fileLabel">Choose a sales file</span>
+        <input id="fileInput" type="file" accept=".csv,.txt,text/csv,text/plain">
+      </label>
+      <button id="sampleButton" class="secondary-button" type="button">Load Sample Data</button>
+    </section>
+
+    <section id="statusPanel" class="status-panel" aria-live="polite">
+      Upload a file to begin.
+    </section>
+
+    <section id="mappingPanel" class="mapping-panel" hidden>
+      <div>
+        <h2>Detected Columns</h2>
+        <p>Adjust these only if the automatic detection chooses the wrong columns.</p>
+      </div>
+      <label>
+        Date column
+        <select id="dateColumnSelect"></select>
+      </label>
+      <label>
+        Sales amount column
+        <select id="amountColumnSelect"></select>
+      </label>
+      <label>
+        Product column
+        <select id="productColumnSelect"></select>
+      </label>
+      <button id="applyColumnsButton" class="primary-button" type="button">Apply Columns</button>
+    </section>
+
+    <section id="resultsPanel" class="results-panel" hidden>
+      <div class="summary-grid" aria-label="Sales summary">
+        <article>
+          <span>Total sales</span>
+          <strong id="totalSales">$0</strong>
+        </article>
+        <article>
+          <span>Rows used</span>
+          <strong id="rowsUsed">0</strong>
+        </article>
+        <article>
+          <span>Average sale</span>
+          <strong id="averageSale">$0</strong>
+        </article>
+        <article>
+          <span>Date range</span>
+          <strong id="dateRange">Not found</strong>
+        </article>
+      </div>
+
+      <section class="chart-panel" aria-labelledby="trend-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Time Series</p>
+            <h2 id="trend-title">Sales Trend</h2>
+          </div>
+          <span id="trendNote" class="panel-note">Date column required</span>
+        </div>
+        <div class="chart-legend">
+          <span><i class="legend-swatch sales"></i>Sales</span>
+          <span><i class="legend-swatch movement"></i>Week-on-week movement</span>
+        </div>
+        <canvas id="salesChart" width="900" height="390" aria-label="Sales trend and week-on-week movement chart"></canvas>
+      </section>
+
+      <section class="chart-panel" aria-labelledby="product-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Products</p>
+            <h2 id="product-title">Top Sales by Product</h2>
+          </div>
+          <span id="productNote" class="panel-note">Product column required</span>
+        </div>
+        <canvas id="productChart" width="900" height="390" aria-label="Top product sales and growth chart"></canvas>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Total sales</th>
+                <th>Growth rate</th>
+              </tr>
+            </thead>
+            <tbody id="productRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="chart-panel" aria-labelledby="forecast-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Forecast</p>
+            <h2 id="forecast-title">Coming Months</h2>
+          </div>
+          <span id="forecastNote" class="panel-note">Simple trend forecast</span>
+        </div>
+        <canvas id="forecastChart" width="900" height="360" aria-label="Sales forecast chart"></canvas>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Forecast sales</th>
+              </tr>
+            </thead>
+            <tbody id="forecastRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

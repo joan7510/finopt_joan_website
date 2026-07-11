@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumen Analytics — Data &amp; AI Strategy</title>
+<title>Lumen Analytics — Pricing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,60 +114,6 @@
     max-width:520px; margin:0 0 40px;
   }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
-  .home-contact{
-    padding:0 0 88px;
-  }
-  .contact-panel{
-    border-top:1px solid var(--sage-line);
-    border-bottom:1px solid var(--sage-line);
-    padding:34px 0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:34px;
-    align-items:center;
-  }
-  .contact-panel h2{
-    margin-bottom:12px;
-  }
-  .contact-panel p{
-    margin:0;
-    color:var(--ink);
-    opacity:.72;
-    line-height:1.65;
-    max-width:560px;
-  }
-  .contact-list{
-    display:grid;
-    gap:12px;
-  }
-  .contact-item{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    padding:14px 0;
-    border-bottom:1px solid var(--sage-line);
-    text-decoration:none;
-  }
-  .contact-item:last-child{ border-bottom:none; }
-  .contact-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal-signal);
-  }
-  .contact-value{
-    color:var(--teal-deep);
-    font-weight:500;
-    text-align:right;
-  }
-  .contact-item:hover .contact-value{ color:var(--teal-signal); }
-  @media (max-width:760px){
-    .home-contact{ padding-bottom:64px; }
-    .contact-panel{ grid-template-columns:1fr; }
-    .contact-item{ flex-direction:column; gap:5px; }
-    .contact-value{ text-align:left; }
-  }
 
   /* ---------- section shared ---------- */
   section{ padding:88px 0; }
@@ -613,6 +559,152 @@
   .form-status.is-success{ display:block; background:#EAF3EE; color:var(--teal-deep); }
   .form-status.is-error{ display:block; background:#FBEAEA; color:#8A2E2E; }
 
+  .pricing-hero{
+    padding:88px 0;
+    background:var(--bg);
+  }
+  .pricing-hero .wrap{ max-width:1120px; }
+  .pricing-hero h1{ max-width:780px; }
+  .pricing-intro{
+    max-width:620px;
+    margin:0;
+    color:var(--ink);
+    opacity:.74;
+    font-size:16.5px;
+    line-height:1.6;
+  }
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    margin-top:56px;
+    background:var(--sage-line);
+    border:1px solid var(--sage-line);
+  }
+  .pricing-card{
+    background:var(--bg-raised);
+    border:none;
+    border-radius:0;
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+  }
+  .pricing-card.is-featured{
+    box-shadow:none;
+    background:#FBFAF7;
+  }
+  .pricing-label{
+    color:var(--teal-signal);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .pricing-card h3{
+    margin:14px 0 10px;
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:24px;
+    letter-spacing:0;
+  }
+  .pricing-card p{
+    color:var(--ink);
+    opacity:.7;
+    line-height:1.65;
+  }
+  .price-row{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    margin:20px 0 6px;
+    color:var(--ink);
+  }
+  .price{
+    font-family:'Fraunces',serif;
+    font-size:46px;
+    font-weight:500;
+  }
+  .price-unit{
+    padding-bottom:8px;
+    color:var(--ink);
+    opacity:.62;
+  }
+  .price-note{ font-size:14px; }
+  .pricing-features{
+    list-style:none;
+    margin:20px 0 24px;
+    padding:0;
+    display:grid;
+    gap:10px;
+    color:var(--ink);
+    opacity:.82;
+    line-height:1.5;
+  }
+  .pricing-features li{
+    position:relative;
+    padding-left:22px;
+  }
+  .pricing-features li:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.62em;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--teal-signal);
+  }
+  .pricing-card .btn{
+    margin-top:auto;
+    width:100%;
+    justify-content:center;
+  }
+  .pricing-note-band{
+    margin-top:20px;
+    background:var(--bg-raised);
+    border:1px solid var(--sage-line);
+    border-radius:0;
+    padding:24px 28px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+  }
+  .pricing-note-band strong{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:18px;
+  }
+  .pricing-note-band p{
+    margin-top:5px;
+    color:var(--ink);
+    opacity:.72;
+    line-height:1.55;
+  }
+  .hourly-rate{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .hourly-rate span{
+    font-size:15px;
+    color:var(--ink);
+    opacity:.62;
+    font-weight:500;
+  }
+  @media (max-width:900px){
+    .pricing-grid{ grid-template-columns:1fr; }
+    .pricing-note-band{ align-items:flex-start; flex-direction:column; }
+  }
+  @media (max-width:560px){
+    .pricing-hero{ padding-top:48px; }
+    .pricing-intro{ font-size:18px; }
+    .price{ font-size:40px; }
+  }
+
   ::selection{ background:var(--teal-signal); color:#fff; }
 </style>
 </head>
@@ -641,38 +733,77 @@
 
 <main>
 
-<!-- HERO -->
-  <section class="hero">
+<!-- PRICING -->
+  <section class="pricing-hero" id="pricing">
     <div class="wrap">
-      <p class="hero-eyebrow">Data Analytics, AI Agents &amp; Workflow Automation</p>
-      <h1>Turn messy data and manual work into <em>decisions, systems and AI agents that move.</em></h1>
-      <p class="hero-sub">I help small and mid-sized businesses find the operational bottlenecks hidden in their data, then build practical analytics, automation and customised AI agents that save time, reduce cost and improve day-to-day decisions.</p>
-      <div class="hero-ctas">
-        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
-        <a href="services.html" class="btn btn-outline">See how it works</a>
+      <p class="hero-eyebrow">Pricing</p>
+      <p class="pricing-intro">Start with a focused cleanup or build toward an ongoing system. Every project begins with a free short review so the quote matches the real work, not a guess.</p>
+
+      <div class="pricing-grid">
+        <article class="pricing-card">
+          <div class="pricing-label">One spreadsheet, fixed</div>
+          <h3>Tidy Up</h3>
+          <p>For a single messy customer export, sales log or contact sheet that needs to become reliable enough to use.</p>
+          <div class="price-row">
+            <span class="price">$650</span>
+            <span class="price-unit">flat</span>
+          </div>
+          <p class="price-note">Typical for up to about 10,000 rows and one source file.</p>
+          <ul class="pricing-features">
+            <li>Remove duplicates and blank records</li>
+            <li>Standardise dates, names and labels</li>
+            <li>Fix obvious typos and inconsistent categories</li>
+            <li>Deliver a clean file in your preferred format</li>
+            <li>One round of revisions</li>
+          </ul>
+          <button type="button" class="btn" data-open-contact>Start here</button>
+        </article>
+
+        <article class="pricing-card is-featured">
+          <div class="pricing-label">Most picked</div>
+          <h3>Sort It Out</h3>
+          <p>For businesses where data lives across CRM exports, spreadsheets, forms or manual processes and needs one trusted view.</p>
+          <div class="price-row">
+            <span class="price">$1,800</span>
+            <span class="price-unit">flat</span>
+          </div>
+          <p class="price-note">Typical for 2-4 sources and up to about 50,000 rows combined.</p>
+          <ul class="pricing-features">
+            <li>Everything in Tidy Up</li>
+            <li>Merge and reconcile multiple files or sources</li>
+            <li>Build checks to catch future data errors</li>
+            <li>Short summary of issues found and fixed</li>
+            <li>Two rounds of revisions</li>
+          </ul>
+          <button type="button" class="btn" data-open-contact>Most popular</button>
+        </article>
+
+        <article class="pricing-card">
+          <div class="pricing-label">Ongoing, stays clean</div>
+          <h3>Stay Clean</h3>
+          <p>For teams that want ongoing data care, light automation and practical support as workflows change.</p>
+          <div class="price-row">
+            <span class="price">$650</span>
+            <span class="price-unit">/month</span>
+          </div>
+          <p class="price-note">After initial cleanup project. Three-month minimum.</p>
+          <ul class="pricing-features">
+            <li>Monthly cleanup pass on live data</li>
+            <li>Light automation for repeat issues</li>
+            <li>Monthly summary of what changed</li>
+            <li>Workflow and AI agent opportunity review</li>
+            <li>Priority turnaround on requests</li>
+          </ul>
+          <button type="button" class="btn" data-open-contact>Set up retainer</button>
+        </article>
       </div>
 
-    </div>
-  </section>
-
-  <section class="home-contact" id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
+      <div class="pricing-note-band">
         <div>
-          <p class="eyebrow">Contact me</p>
-          <h2>Ready to talk through your data or AI workflow?</h2>
-          <p>Send a quick note or call directly. I can help you clarify the problem, spot the highest-value workflow, and decide what is worth automating first.</p>
+          <strong>Not sure it fits a tier?</strong>
+          <p>Small one-off questions, quick diagnostics and minor website or analytics updates can be billed hourly instead of forcing a package.</p>
         </div>
-        <div class="contact-list">
-          <a class="contact-item" href="tel:+61426005000">
-            <span class="contact-label">Telephone</span>
-            <span class="contact-value">0426 005 000</span>
-          </a>
-          <a class="contact-item" href="mailto:finopt_au@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">finopt_au@gmail.com</span>
-          </a>
-        </div>
+        <div class="hourly-rate">$125<span>/hr</span></div>
       </div>
     </div>
   </section>

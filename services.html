@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumen Analytics — Data &amp; AI Strategy</title>
+<title>Services — Lumen Analytics Data &amp; AI Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,60 +114,6 @@
     max-width:520px; margin:0 0 40px;
   }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
-  .home-contact{
-    padding:0 0 88px;
-  }
-  .contact-panel{
-    border-top:1px solid var(--sage-line);
-    border-bottom:1px solid var(--sage-line);
-    padding:34px 0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:34px;
-    align-items:center;
-  }
-  .contact-panel h2{
-    margin-bottom:12px;
-  }
-  .contact-panel p{
-    margin:0;
-    color:var(--ink);
-    opacity:.72;
-    line-height:1.65;
-    max-width:560px;
-  }
-  .contact-list{
-    display:grid;
-    gap:12px;
-  }
-  .contact-item{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    padding:14px 0;
-    border-bottom:1px solid var(--sage-line);
-    text-decoration:none;
-  }
-  .contact-item:last-child{ border-bottom:none; }
-  .contact-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal-signal);
-  }
-  .contact-value{
-    color:var(--teal-deep);
-    font-weight:500;
-    text-align:right;
-  }
-  .contact-item:hover .contact-value{ color:var(--teal-signal); }
-  @media (max-width:760px){
-    .home-contact{ padding-bottom:64px; }
-    .contact-panel{ grid-template-columns:1fr; }
-    .contact-item{ flex-direction:column; gap:5px; }
-    .contact-value{ text-align:left; }
-  }
 
   /* ---------- section shared ---------- */
   section{ padding:88px 0; }
@@ -641,37 +587,45 @@
 
 <main>
 
-<!-- HERO -->
-  <section class="hero">
+<!-- SOLUTIONS -->
+  <section id="solutions">
     <div class="wrap">
-      <p class="hero-eyebrow">Data Analytics, AI Agents &amp; Workflow Automation</p>
-      <h1>Turn messy data and manual work into <em>decisions, systems and AI agents that move.</em></h1>
-      <p class="hero-sub">I help small and mid-sized businesses find the operational bottlenecks hidden in their data, then build practical analytics, automation and customised AI agents that save time, reduce cost and improve day-to-day decisions.</p>
-      <div class="hero-ctas">
-        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
-        <a href="services.html" class="btn btn-outline">See how it works</a>
+      <div class="section-head">
+        <p class="eyebrow">How I help</p>
+        <h2>Practical AI and analytics solutions, built around your business</h2>
+        <p class="section-lede">No AI theatre and no dashboards for the sake of it. Every engagement starts with the work your team actually does, then builds the data, automation and AI support that makes that work faster and more reliable.</p>
       </div>
 
-    </div>
-  </section>
-
-  <section class="home-contact" id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
-        <div>
-          <p class="eyebrow">Contact me</p>
-          <h2>Ready to talk through your data or AI workflow?</h2>
-          <p>Send a quick note or call directly. I can help you clarify the problem, spot the highest-value workflow, and decide what is worth automating first.</p>
+      <div class="solutions-grid">
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/></svg>
+          <h3>Data consolidation</h3>
+          <p>Bring your sales, finance and operational data into one reliable source, so every report starts from the same numbers.</p>
         </div>
-        <div class="contact-list">
-          <a class="contact-item" href="tel:+61426005000">
-            <span class="contact-label">Telephone</span>
-            <span class="contact-value">0426 005 000</span>
-          </a>
-          <a class="contact-item" href="mailto:finopt_au@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">finopt_au@gmail.com</span>
-          </a>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9M11 19V5M18 19v-7"/></svg>
+          <h3>Dashboards &amp; reporting</h3>
+          <p>Clear, live views of the metrics that matter to you — built so anyone on your team can read them at a glance.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Forecasting &amp; prediction</h3>
+          <p>Move from "what happened" to "what's likely to happen next" with lightweight forecasting, customer signals and operational indicators tuned to your business.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+          <h3>Custom AI agents</h3>
+          <p>Design AI agents that investigate workflows, retrieve the right information, draft updates, flag exceptions and help teams complete routine work faster.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h16v4H4zM4 12h10v4H4zM4 20h7"/></svg>
+          <h3>Data quality &amp; governance</h3>
+          <p>Clean, well-structured, well-documented data, with clear rules for who can access and edit what.</p>
+        </div>
+        <div class="solution">
+          <svg class="solution-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L3 14h7l-1 8 11-12h-7z"/></svg>
+          <h3>Workflow automation</h3>
+          <p>Remove repetitive reporting, reconciliation and follow-up tasks so your team's time goes into decisions and customer work, not copying data between systems.</p>
         </div>
       </div>
     </div>

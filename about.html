@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumen Analytics — Data &amp; AI Strategy</title>
+<title>About — Lumen Analytics Data &amp; AI Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,60 +114,6 @@
     max-width:520px; margin:0 0 40px;
   }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
-  .home-contact{
-    padding:0 0 88px;
-  }
-  .contact-panel{
-    border-top:1px solid var(--sage-line);
-    border-bottom:1px solid var(--sage-line);
-    padding:34px 0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:34px;
-    align-items:center;
-  }
-  .contact-panel h2{
-    margin-bottom:12px;
-  }
-  .contact-panel p{
-    margin:0;
-    color:var(--ink);
-    opacity:.72;
-    line-height:1.65;
-    max-width:560px;
-  }
-  .contact-list{
-    display:grid;
-    gap:12px;
-  }
-  .contact-item{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    padding:14px 0;
-    border-bottom:1px solid var(--sage-line);
-    text-decoration:none;
-  }
-  .contact-item:last-child{ border-bottom:none; }
-  .contact-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal-signal);
-  }
-  .contact-value{
-    color:var(--teal-deep);
-    font-weight:500;
-    text-align:right;
-  }
-  .contact-item:hover .contact-value{ color:var(--teal-signal); }
-  @media (max-width:760px){
-    .home-contact{ padding-bottom:64px; }
-    .contact-panel{ grid-template-columns:1fr; }
-    .contact-item{ flex-direction:column; gap:5px; }
-    .contact-value{ text-align:left; }
-  }
 
   /* ---------- section shared ---------- */
   section{ padding:88px 0; }
@@ -641,37 +587,22 @@
 
 <main>
 
-<!-- HERO -->
-  <section class="hero">
+<!-- ABOUT -->
+  <section id="about">
     <div class="wrap">
-      <p class="hero-eyebrow">Data Analytics, AI Agents &amp; Workflow Automation</p>
-      <h1>Turn messy data and manual work into <em>decisions, systems and AI agents that move.</em></h1>
-      <p class="hero-sub">I help small and mid-sized businesses find the operational bottlenecks hidden in their data, then build practical analytics, automation and customised AI agents that save time, reduce cost and improve day-to-day decisions.</p>
-      <div class="hero-ctas">
-        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
-        <a href="services.html" class="btn btn-outline">See how it works</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="home-contact" id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
+      <div class="about-grid">
         <div>
-          <p class="eyebrow">Contact me</p>
-          <h2>Ready to talk through your data or AI workflow?</h2>
-          <p>Send a quick note or call directly. I can help you clarify the problem, spot the highest-value workflow, and decide what is worth automating first.</p>
+          <p class="eyebrow">About</p>
+          <h2>Ten years turning data, analytics and AI into practical decisions</h2>
+          <p>I work directly with business owners and leadership teams — there's no account manager between you and the person doing the analysis. With over a decade in advanced analytics and data science, I build tactical solutions using your own data, workflow knowledge, machine learning and practical AI automation.</p>
+          <p>Recent work includes customer retention modelling, pricing optimisation, sales trend reporting, forecasting, context analysis and AI-assisted workflow design. A small investment, applied to the right question or workflow, can create a disproportionately large outcome — especially when it removes repeated manual work.</p>
         </div>
-        <div class="contact-list">
-          <a class="contact-item" href="tel:+61426005000">
-            <span class="contact-label">Telephone</span>
-            <span class="contact-value">0426 005 000</span>
-          </a>
-          <a class="contact-item" href="mailto:finopt_au@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">finopt_au@gmail.com</span>
-          </a>
+        <div class="about-card">
+          <span class="mono">At a glance</span>
+          <div class="stat-row"><span class="label">Experience</span><span class="value">10+ years</span></div>
+          <div class="stat-row"><span class="label">Customer retention</span><span class="value">Proven results</span></div>
+          <div class="stat-row"><span class="label">Pricing optimisation</span><span class="value">Proven results</span></div>
+          <div class="stat-row"><span class="label">AI workflow agents</span><span class="value">Custom builds</span></div>
         </div>
       </div>
     </div>

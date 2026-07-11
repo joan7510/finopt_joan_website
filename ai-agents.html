@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumen Analytics — Data &amp; AI Strategy</title>
+<title>AI Agents — Lumen Analytics Data &amp; AI Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,60 +114,6 @@
     max-width:520px; margin:0 0 40px;
   }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
-  .home-contact{
-    padding:0 0 88px;
-  }
-  .contact-panel{
-    border-top:1px solid var(--sage-line);
-    border-bottom:1px solid var(--sage-line);
-    padding:34px 0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:34px;
-    align-items:center;
-  }
-  .contact-panel h2{
-    margin-bottom:12px;
-  }
-  .contact-panel p{
-    margin:0;
-    color:var(--ink);
-    opacity:.72;
-    line-height:1.65;
-    max-width:560px;
-  }
-  .contact-list{
-    display:grid;
-    gap:12px;
-  }
-  .contact-item{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    padding:14px 0;
-    border-bottom:1px solid var(--sage-line);
-    text-decoration:none;
-  }
-  .contact-item:last-child{ border-bottom:none; }
-  .contact-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal-signal);
-  }
-  .contact-value{
-    color:var(--teal-deep);
-    font-weight:500;
-    text-align:right;
-  }
-  .contact-item:hover .contact-value{ color:var(--teal-signal); }
-  @media (max-width:760px){
-    .home-contact{ padding-bottom:64px; }
-    .contact-panel{ grid-template-columns:1fr; }
-    .contact-item{ flex-direction:column; gap:5px; }
-    .contact-value{ text-align:left; }
-  }
 
   /* ---------- section shared ---------- */
   section{ padding:88px 0; }
@@ -641,37 +587,112 @@
 
 <main>
 
-<!-- HERO -->
-  <section class="hero">
+<!-- AI AGENTS -->
+  <section class="agents" id="ai-agents">
     <div class="wrap">
-      <p class="hero-eyebrow">Data Analytics, AI Agents &amp; Workflow Automation</p>
-      <h1>Turn messy data and manual work into <em>decisions, systems and AI agents that move.</em></h1>
-      <p class="hero-sub">I help small and mid-sized businesses find the operational bottlenecks hidden in their data, then build practical analytics, automation and customised AI agents that save time, reduce cost and improve day-to-day decisions.</p>
-      <div class="hero-ctas">
-        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
-        <a href="services.html" class="btn btn-outline">See how it works</a>
+      <div class="agent-grid">
+        <div>
+          <p class="eyebrow">Customised AI agents</p>
+          <h2>AI agents that investigate workflows and remove low-value work</h2>
+          <p class="section-lede">A useful AI agent is not just a chatbot. It needs a clear job, trusted data access, guardrails, and a workflow it can improve. I help identify where an agent can save time, reduce handoffs, cut operating cost and give staff better information at the moment they need it.</p>
+        </div>
+        <div class="agent-list">
+          <div class="agent-item">
+            <h3>Workflow investigation agents</h3>
+            <p>Agents that review process steps, surface bottlenecks, compare cases and highlight where staff spend time on repeatable manual work.</p>
+          </div>
+          <div class="agent-item">
+            <h3>Reporting and insight agents</h3>
+            <p>Agents that answer business questions from approved data sources, summarise performance, explain movement and prepare plain-English updates.</p>
+          </div>
+          <div class="agent-item">
+            <h3>Operations support agents</h3>
+            <p>Agents that triage requests, draft responses, check documents, flag exceptions and route work to the right person with context attached.</p>
+          </div>
+        </div>
       </div>
 
-    </div>
-  </section>
-
-  <section class="home-contact" id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
-        <div>
-          <p class="eyebrow">Contact me</p>
-          <h2>Ready to talk through your data or AI workflow?</h2>
-          <p>Send a quick note or call directly. I can help you clarify the problem, spot the highest-value workflow, and decide what is worth automating first.</p>
+      <div class="agent-flow" style="margin-top:42px;">
+        <div class="agent-flow-step">
+          <span>01</span>
+          <div>
+            <strong>Map the workflow</strong>
+            <p>Understand the current process, handoffs, decisions, data sources, risks and the tasks that consume the most time.</p>
+          </div>
         </div>
-        <div class="contact-list">
-          <a class="contact-item" href="tel:+61426005000">
-            <span class="contact-label">Telephone</span>
-            <span class="contact-value">0426 005 000</span>
-          </a>
-          <a class="contact-item" href="mailto:finopt_au@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">finopt_au@gmail.com</span>
-          </a>
+        <div class="agent-flow-step">
+          <span>02</span>
+          <div>
+            <strong>Choose the right agent job</strong>
+            <p>Define what the agent should investigate, summarise, draft, check or escalate, and what should stay with a human.</p>
+          </div>
+        </div>
+        <div class="agent-flow-step">
+          <span>03</span>
+          <div>
+            <strong>Build with controls</strong>
+            <p>Connect only the data the agent needs, add review points, logging and guardrails, and test outputs against real examples.</p>
+          </div>
+        </div>
+        <div class="agent-flow-step">
+          <span>04</span>
+          <div>
+            <strong>Measure the return</strong>
+            <p>Track time saved, fewer handoffs, faster turnaround, reduced errors and the operating cost removed from the workflow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-demo" id="workflow-agent-demo">
+        <div class="agent-demo-grid">
+          <div>
+            <p class="eyebrow">Mini demo</p>
+            <h3>Try a workflow triage agent</h3>
+            <p>Paste a messy operational issue, or use one of the examples. This static demo shows how an agent can classify the workflow, identify the likely blocker, suggest next steps and estimate where time could be saved.</p>
+
+            <div class="sample-agent-buttons" aria-label="Sample workflow issues">
+              <button type="button" data-agent-sample="order">Delayed order</button>
+              <button type="button" data-agent-sample="invoice">Invoice exception</button>
+              <button type="button" data-agent-sample="handoff">Internal handoff</button>
+            </div>
+
+            <label for="agentInput">Workflow issue</label>
+            <textarea id="agentInput">A customer order has been delayed for 8 days. Sales says the customer approved the quote. Operations says they are waiting on stock confirmation. Finance says payment terms are not confirmed. Customer is asking for an update today.</textarea>
+
+            <div class="agent-demo-actions">
+              <button type="button" class="btn" id="analyseAgentInput">Analyse workflow</button>
+              <button type="button" class="btn btn-outline" data-open-contact>Discuss a custom agent</button>
+            </div>
+          </div>
+
+          <div class="agent-demo-output" id="agentOutput" aria-live="polite">
+            <div class="agent-output-card">
+              <span>Workflow type</span>
+              <strong id="agentType">Order fulfilment delay</strong>
+              <p id="agentPriority">Priority: High</p>
+            </div>
+            <div class="agent-output-card">
+              <span>Likely bottleneck</span>
+              <p id="agentBottleneck">The order is stuck between operations and finance because stock confirmation and payment terms are both unresolved.</p>
+            </div>
+            <div class="agent-output-card">
+              <span>Suggested next steps</span>
+              <ol id="agentSteps">
+                <li>Confirm whether quote approval is recorded.</li>
+                <li>Check stock availability or supplier ETA.</li>
+                <li>Confirm payment terms with finance.</li>
+                <li>Send customer a same-day update with the current blocker.</li>
+              </ol>
+            </div>
+            <div class="agent-output-card">
+              <span>Automation opportunity</span>
+              <p id="agentOpportunity">Monitor delayed orders, identify the missing step, summarise the blocker and draft a customer update before the delay becomes urgent.</p>
+            </div>
+            <div class="agent-output-card">
+              <span>Estimated time saved</span>
+              <strong id="agentSaving">30-45 minutes per investigation</strong>
+            </div>
+          </div>
         </div>
       </div>
     </div>

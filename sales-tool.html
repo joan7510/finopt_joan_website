@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumen Analytics — Data &amp; AI Strategy</title>
+<title>Sales Tool — Lumen Analytics Data &amp; AI Strategy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -114,60 +114,6 @@
     max-width:520px; margin:0 0 40px;
   }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
-  .home-contact{
-    padding:0 0 88px;
-  }
-  .contact-panel{
-    border-top:1px solid var(--sage-line);
-    border-bottom:1px solid var(--sage-line);
-    padding:34px 0;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:34px;
-    align-items:center;
-  }
-  .contact-panel h2{
-    margin-bottom:12px;
-  }
-  .contact-panel p{
-    margin:0;
-    color:var(--ink);
-    opacity:.72;
-    line-height:1.65;
-    max-width:560px;
-  }
-  .contact-list{
-    display:grid;
-    gap:12px;
-  }
-  .contact-item{
-    display:flex;
-    justify-content:space-between;
-    gap:18px;
-    padding:14px 0;
-    border-bottom:1px solid var(--sage-line);
-    text-decoration:none;
-  }
-  .contact-item:last-child{ border-bottom:none; }
-  .contact-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--teal-signal);
-  }
-  .contact-value{
-    color:var(--teal-deep);
-    font-weight:500;
-    text-align:right;
-  }
-  .contact-item:hover .contact-value{ color:var(--teal-signal); }
-  @media (max-width:760px){
-    .home-contact{ padding-bottom:64px; }
-    .contact-panel{ grid-template-columns:1fr; }
-    .contact-item{ flex-direction:column; gap:5px; }
-    .contact-value{ text-align:left; }
-  }
 
   /* ---------- section shared ---------- */
   section{ padding:88px 0; }
@@ -641,37 +587,47 @@
 
 <main>
 
-<!-- HERO -->
-  <section class="hero">
+<!-- SALES TOOL -->
+  <section class="tool-preview" id="sales-tool">
     <div class="wrap">
-      <p class="hero-eyebrow">Data Analytics, AI Agents &amp; Workflow Automation</p>
-      <h1>Turn messy data and manual work into <em>decisions, systems and AI agents that move.</em></h1>
-      <p class="hero-sub">I help small and mid-sized businesses find the operational bottlenecks hidden in their data, then build practical analytics, automation and customised AI agents that save time, reduce cost and improve day-to-day decisions.</p>
-      <div class="hero-ctas">
-        <button type="button" class="btn" data-open-contact>Book a free consultation</button>
-        <a href="services.html" class="btn btn-outline">See how it works</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="home-contact" id="contact">
-    <div class="wrap">
-      <div class="contact-panel">
+      <div class="tool-preview-grid">
         <div>
-          <p class="eyebrow">Contact me</p>
-          <h2>Ready to talk through your data or AI workflow?</h2>
-          <p>Send a quick note or call directly. I can help you clarify the problem, spot the highest-value workflow, and decide what is worth automating first.</p>
+          <p class="eyebrow">Free analysis tool</p>
+          <h2>Upload sales data and see the story in minutes</h2>
+          <p class="section-lede">Try a lightweight browser-based tool that summarises sales, detects weekly or monthly trends, highlights week-on-week movement, ranks products by revenue and growth, and creates a simple forward forecast.</p>
+          <div class="hero-ctas" style="margin:30px 0 0;">
+            <a href="sales_summary_tool/index.html" class="btn">Open sales summary tool</a>
+            <button type="button" class="btn btn-outline" data-open-contact>Discuss a custom version</button>
+          </div>
         </div>
-        <div class="contact-list">
-          <a class="contact-item" href="tel:+61426005000">
-            <span class="contact-label">Telephone</span>
-            <span class="contact-value">0426 005 000</span>
-          </a>
-          <a class="contact-item" href="mailto:finopt_au@gmail.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">finopt_au@gmail.com</span>
-          </a>
+
+        <div class="tool-preview-card" aria-label="Sales summary tool preview">
+          <div class="tool-metrics">
+            <div class="tool-metric">
+              <span>Total sales</span>
+              <strong>$553K</strong>
+            </div>
+            <div class="tool-metric">
+              <span>Periods</span>
+              <strong>6 weeks</strong>
+            </div>
+            <div class="tool-metric">
+              <span>Products</span>
+              <strong>3 ranked</strong>
+            </div>
+            <div class="tool-metric">
+              <span>Forecast</span>
+              <strong>6 ahead</strong>
+            </div>
+          </div>
+          <div class="tool-chart">
+            <p class="eyebrow">Product performance</p>
+            <div class="tool-bars">
+              <div class="tool-bar"><span>Analytics</span><span style="--bar:100%;"></span><span>+23%</span></div>
+              <div class="tool-bar"><span>Automation</span><span style="--bar:92%;"></span><span>+38%</span></div>
+              <div class="tool-bar"><span>Advisory</span><span style="--bar:74%;"></span><span>+17%</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
