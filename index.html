@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lumen Analytics — Data &amp; AI Strategy</title>
+<meta name="description" content="Lumen Analytics helps small and mid-sized businesses turn messy data, manual workflows and scattered systems into practical analytics, automation and AI agents.">
+<meta property="og:title" content="Lumen Analytics — Data &amp; AI Strategy">
+<meta property="og:description" content="Practical analytics, automation and AI agents for clearer business decisions and faster workflows.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="social-preview.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lumen Analytics — Data &amp; AI Strategy">
+<meta name="twitter:description" content="Turn messy data and manual work into decisions, systems and AI agents that move.">
+<meta name="twitter:image" content="social-preview.svg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -53,7 +63,7 @@
   }
   .logo{
     display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces', serif; font-weight:500; font-size:19px;
+    font-family:'Fraunces', serif; font-weight:500; font-size:17.5px;
     letter-spacing:0.01em;
     text-decoration:none;
   }
@@ -62,14 +72,70 @@
     background:var(--teal-signal);
     flex-shrink:0;
   }
-  nav{ display:flex; align-items:center; gap:36px; }
+  nav{ display:flex; align-items:center; gap:20px; position:relative; }
   nav a{
     text-decoration:none; font-size:14.5px; color:var(--teal-deep);
     opacity:0.78;
   }
   nav a:hover{ opacity:1; }
-  .nav-links{ display:flex; gap:32px; }
-  @media (max-width:780px){ .nav-links{ display:none; } }
+  .nav-links{ display:flex; gap:20px; }
+  .nav-toggle{
+    display:none;
+    width:42px;
+    height:42px;
+    border:1px solid var(--sage-line);
+    border-radius:3px;
+    background:transparent;
+    color:var(--teal-deep);
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+  .nav-toggle span,
+  .nav-toggle span::before,
+  .nav-toggle span::after{
+    display:block;
+    width:18px;
+    height:2px;
+    background:currentColor;
+    content:'';
+    transition:transform 0.18s ease, opacity 0.18s ease;
+  }
+  .nav-toggle span{ position:relative; }
+  .nav-toggle span::before{ position:absolute; top:-6px; left:0; }
+  .nav-toggle span::after{ position:absolute; top:6px; left:0; }
+  .nav-toggle[aria-expanded="true"] span{ background:transparent; }
+  .nav-toggle[aria-expanded="true"] span::before{ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span::after{ transform:translateY(-6px) rotate(-45deg); }
+  @media (max-width:1080px){
+    nav{ gap:10px; }
+    .nav-toggle{ display:inline-flex; }
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:calc(100% + 14px);
+      right:0;
+      width:min(300px, calc(100vw - 40px));
+      flex-direction:column;
+      gap:0;
+      background:var(--bg-raised);
+      border:1px solid var(--sage-line);
+      box-shadow:0 18px 42px rgba(11,43,38,0.13);
+      padding:8px;
+    }
+    .nav-links.is-open{ display:flex; }
+    .nav-links a{
+      padding:13px 12px;
+      opacity:1;
+      border-bottom:1px solid var(--cream-line);
+    }
+    .nav-links a:last-child{ border-bottom:none; }
+  }
+  @media (max-width:460px){
+    .header-inner{ height:70px; }
+    nav .btn{ padding:10px 13px; font-size:13px; }
+  }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     background:var(--teal-deep); color:#F7F5F0;
@@ -227,6 +293,15 @@
     font-family:'Fraunces', serif; font-weight:500; font-size:18px; margin:0 0 10px;
   }
   .solution p{ font-size:14.5px; line-height:1.6; opacity:0.7; margin:0; }
+  .solution-link{
+    display:inline-block;
+    margin-top:18px;
+    color:var(--teal-signal);
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+  }
+  .solution-link:hover{ color:var(--teal-deep); }
 
   /* ---------- sales tool ---------- */
   .tool-preview{
@@ -498,6 +573,57 @@
   .about p{ font-size:16px; line-height:1.7; opacity:0.78; }
   .about p + p{ margin-top:16px; }
 
+  /* ---------- homepage proof ---------- */
+  .proof-teaser{
+    background:var(--teal-deep);
+    color:#F4F1E9;
+    padding:72px 0;
+  }
+  .proof-teaser-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:52px;
+    align-items:center;
+  }
+  .proof-teaser .eyebrow{ color:#7FBFA9; }
+  .proof-teaser h2{ color:#F4F1E9; }
+  .proof-teaser .section-lede{ color:#F4F1E9; opacity:0.72; }
+  .proof-stats{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:rgba(247,245,240,0.16);
+    border:1px solid rgba(247,245,240,0.16);
+  }
+  .proof-stat{
+    background:rgba(247,245,240,0.06);
+    padding:22px;
+  }
+  .proof-stat strong{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:32px;
+    margin-bottom:8px;
+  }
+  .proof-stat span{
+    display:block;
+    font-size:13.5px;
+    line-height:1.45;
+    opacity:0.72;
+  }
+  .proof-teaser .btn{
+    background:#F4F1E9;
+    color:var(--teal-deep);
+    border-color:#F4F1E9;
+    margin-top:24px;
+  }
+  .proof-teaser .btn:hover{ background:transparent; color:#F4F1E9; }
+  @media (max-width:880px){
+    .proof-teaser-grid{ grid-template-columns:1fr; gap:34px; }
+    .proof-stats{ grid-template-columns:1fr; }
+  }
+
   /* ---------- CTA band ---------- */
   .cta-band{
     background:var(--teal-deep); color:#F4F1E9;
@@ -625,16 +751,17 @@
       Lumen Analytics
     </a>
     <nav>
-      <div class="nav-links">
-        <a href="what-i-solve.html">What I solve</a>
-        <a href="services.html">Services</a>
-        <a href="sales-tool.html">Sales tool</a>
-        <a href="ai-agents.html">AI agents</a>
-        <a href="how-it-works.html">How it works</a>
+      <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+        <span aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primaryNav">
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="results-case-studies.html">Results/Case Studies</a>
         <a href="pricing.html">Pricing</a>
       </div>
-      <button type="button" class="btn" data-open-contact>Book a free consultation</button>
+      <button type="button" class="btn" data-open-contact>Contact</button>
     </nav>
   </div>
 </header>
@@ -656,6 +783,132 @@
         <a href="ai-agents.html" class="btn btn-outline">An simple AI workflow agents</a>
         <a href="pricing.html" class="btn btn-outline">Pricing</a>
         </div>
+    </div>
+  </section>
+
+<!-- PROBLEMS -->
+  <section class="problems" id="problems">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Sound familiar?</p>
+        <h2>Most businesses aren't short on data or tools.<br>They're short on usable systems.</h2>
+        <p class="section-lede">The issue is rarely one missing dashboard. It is usually scattered data, repeated manual work, and workflows that depend on people copying information between systems.</p>
+      </div>
+
+      <div class="problem-list">
+        <div class="problem">
+          <p class="problem-num">01</p>
+          <h3>Disconnected systems</h3>
+          <p>Sales, finance, customer and operations data live in different tools that don't talk to each other, so no one has a single, trustworthy view of the business.</p>
+        </div>
+        <div class="problem">
+          <p class="problem-num">02</p>
+          <h3>Reporting that looks back, not forward</h3>
+          <p>You can see what happened last month. What's missing is a reliable read on what's likely to happen next, which workflow is slowing the team down, and what action to take.</p>
+        </div>
+        <div class="problem">
+          <p class="problem-num">03</p>
+          <h3>No time to dig into it</h3>
+          <p>Teams lose hours to checking spreadsheets, rewriting updates, moving data, chasing exceptions and answering the same internal questions again and again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- APPROACH -->
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="approach-grid">
+        <div>
+          <p class="eyebrow">My approach</p>
+          <h2>Think big.<br>Start small.<br>Prove it works.</h2>
+          <p class="section-lede">You don't need a year-long transformation programme to get value from AI and analytics. You need one well-chosen workflow or decision, a practical pilot that proves itself quickly, and a clear path to scale it safely.</p>
+        </div>
+        <div class="approach-steps">
+          <div class="step">
+            <span class="step-mark mono">01</span>
+            <div>
+              <h4>Understand</h4>
+              <p>We start with your goals, key decisions, repeated workflows and the places where current data, reporting or manual processes are slowing the business down.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">02</span>
+            <div>
+              <h4>Pilot</h4>
+              <p>I design and build a small, focused solution - dashboard, forecast, automation or AI agent - aimed at one real business problem, so you see value in weeks, not quarters.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">03</span>
+            <div>
+              <h4>Prove</h4>
+              <p>We review what the pilot found, what time or cost it saved, how reliable the outputs are, and whether it should be expanded.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-mark mono">04</span>
+            <div>
+              <h4>Scale</h4>
+              <p>Once the value is clear, I build the production-ready version: documented, reliable, monitored, and handed over so your team can run with it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- SERVICES PREVIEW -->
+  <section id="services-preview">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What I deliver</p>
+        <h2>Practical systems that make the work easier to run.</h2>
+        <p class="section-lede">From cleaned-up reporting to workflow agents, each build is scoped around a real operational decision or repeatable task.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <article class="solution">
+          <svg class="solution-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="11" rx="1"/></svg>
+          <h3>Data consolidation &amp; reporting</h3>
+          <p>Bring sales, finance and operations data into one reliable view, then turn it into dashboards your team can actually use.</p>
+          <a class="solution-link" href="services.html">View services</a>
+        </article>
+        <article class="solution">
+          <svg class="solution-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9M11 19V5M18 19v-7"/></svg>
+          <h3>Sales analytics work sample</h3>
+          <p>See the sales tool example for trend analysis, top product views, forecasting and simple operating summaries.</p>
+          <a class="solution-link" href="sales-tool.html">View sales tool</a>
+        </article>
+        <article class="solution">
+          <svg class="solution-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+          <h3>Custom AI agents</h3>
+          <p>Design agents that triage workflow issues, retrieve the right context, draft updates and flag exceptions for review.</p>
+          <a class="solution-link" href="ai-agents.html">Explore AI agents</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<!-- PROOF PREVIEW -->
+  <section class="proof-teaser" id="proof">
+    <div class="wrap proof-teaser-grid">
+      <div>
+        <p class="eyebrow">Proof it works</p>
+        <h2>A sales analytics project turned scattered data into clearer operating decisions.</h2>
+        <p class="section-lede">The featured case study shows how consolidated reporting helped a multi-location retailer spot growth opportunities, reduce leakage and make stronger product and regional decisions.</p>
+        <a href="results-case-studies.html" class="btn">View results</a>
+      </div>
+      <div class="proof-stats" aria-label="Featured results">
+        <div class="proof-stat">
+          <strong>10%</strong>
+          <span>Operating cost reduction over six months.</span>
+        </div>
+        <div class="proof-stat">
+          <strong>20%</strong>
+          <span>Sales growth led by stronger product and regional decisions.</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -687,9 +940,7 @@
   <div class="wrap footer-inner">
     <span>© 2026 Lumen Analytics</span>
     <div class="footer-links">
-      <a href="#">LinkedIn</a>
       <a href="mailto:finopt_au@gmail.com">Email</a>
-      <a href="#">Privacy</a>
     </div>
   </div>
 </footer>
@@ -754,23 +1005,39 @@
 
 <script>
   (function(){
+    var navToggle = document.querySelector('.nav-toggle');
+    var navLinks = document.getElementById('primaryNav');
     var overlay = document.getElementById('contactModal');
     var openTriggers = document.querySelectorAll('[data-open-contact]');
     var closeTriggers = document.querySelectorAll('[data-close-contact]');
     var form = document.getElementById('contactForm');
     var status = document.getElementById('formStatus');
     var lastFocused = null;
-    var agentInput = document.getElementById('agentInput');
-    var analyseAgentInput = document.getElementById('analyseAgentInput');
-    var sampleAgentButtons = document.querySelectorAll('[data-agent-sample]');
-    var agentSamples = {
-      order: "A customer order has been delayed for 8 days. Sales says the customer approved the quote. Operations says they are waiting on stock confirmation. Finance says payment terms are not confirmed. Customer is asking for an update today.",
-      invoice: "Customer says the invoice amount looks wrong. Sales team says a discount was approved, but finance cannot find the approval email. Need to check CRM, invoice history, and who approved the discount.",
-      handoff: "The onboarding task has moved between account management, implementation and support three times. Nobody is sure who owns the next step. Customer has sent two follow-up emails and the team is waiting for the latest requirements document."
-    };
+
+    function closeNav(){
+      if (!navToggle || !navLinks) return;
+      navLinks.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (navToggle && navLinks){
+      navToggle.addEventListener('click', function(){
+        var isOpen = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', closeNav);
+      });
+      document.addEventListener('click', function(e){
+        if (!navLinks.classList.contains('is-open')) return;
+        if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+        closeNav();
+      });
+    }
 
     function openModal(){
       lastFocused = document.activeElement;
+      closeNav();
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -794,7 +1061,10 @@
       if (e.target === overlay) closeModal();
     });
     document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+      if (e.key === 'Escape'){
+        closeNav();
+        if (overlay.classList.contains('is-open')) closeModal();
+      }
     });
 
     if (form){
@@ -830,108 +1100,6 @@
         });
       });
     }
-
-    function analyseWorkflow(text){
-      var lower = (text || '').toLowerCase();
-      if (lower.indexOf('order') !== -1 || lower.indexOf('stock') !== -1 || lower.indexOf('supplier') !== -1 || lower.indexOf('delayed') !== -1){
-        return {
-          type: 'Order fulfilment delay',
-          priority: lower.indexOf('urgent') !== -1 || lower.indexOf('today') !== -1 || lower.indexOf('8 days') !== -1 ? 'Priority: High' : 'Priority: Medium',
-          bottleneck: 'The order is likely stuck between operations and finance because stock confirmation and payment terms are both unresolved.',
-          steps: [
-            'Confirm whether quote approval is recorded.',
-            'Check stock availability or supplier ETA.',
-            'Confirm payment terms with finance.',
-            'Send customer a same-day update with the current blocker.',
-            'Escalate to operations lead if stock and payment are both unresolved.'
-          ],
-          opportunity: 'Monitor delayed orders, identify the missing step, summarise the blocker and draft a customer update before the delay becomes urgent.',
-          saving: '30-45 minutes per delayed order investigation'
-        };
-      }
-      if (lower.indexOf('invoice') !== -1 || lower.indexOf('discount') !== -1 || lower.indexOf('payment') !== -1 || lower.indexOf('finance') !== -1){
-        return {
-          type: 'Billing exception',
-          priority: lower.indexOf('customer') !== -1 ? 'Priority: Medium-high' : 'Priority: Medium',
-          bottleneck: 'The workflow appears stuck because commercial approval, invoice history and finance records are not connected in one place.',
-          steps: [
-            'Check the original quote and discount approval record.',
-            'Compare invoice amount against the approved quote or contract.',
-            'Search CRM notes and approval emails for the authorised discount.',
-            'Update the invoice record or escalate the missing approval to finance lead.'
-          ],
-          opportunity: 'Connect CRM, invoice and approval records so the agent can find missing evidence and draft the finance follow-up automatically.',
-          saving: '20-35 minutes per billing exception'
-        };
-      }
-      if (lower.indexOf('onboarding') !== -1 || lower.indexOf('handoff') !== -1 || lower.indexOf('owner') !== -1 || lower.indexOf('requirements') !== -1){
-        return {
-          type: 'Internal handoff delay',
-          priority: 'Priority: Medium',
-          bottleneck: 'Ownership is unclear, so the task is moving between teams without a single next action or accountable owner.',
-          steps: [
-            'Identify the last confirmed owner and the current blocker.',
-            'List the missing documents or decisions needed to move forward.',
-            'Assign one accountable owner for the next step.',
-            'Send the customer a concise status update with the next checkpoint.'
-          ],
-          opportunity: 'Monitor tasks that change owner repeatedly, summarise the current blocker and prompt the right team before the customer has to chase.',
-          saving: '25-40 minutes per stalled handoff'
-        };
-      }
-      return {
-        type: 'General workflow triage',
-        priority: 'Priority: Medium',
-        bottleneck: 'The workflow likely needs clearer ownership, better source data and a defined next action before it can move forward.',
-        steps: [
-          'Identify the current owner and the expected outcome.',
-          'List the missing information or approval needed.',
-          'Confirm which system contains the source of truth.',
-          'Set the next action and follow-up checkpoint.'
-        ],
-        opportunity: 'Create an agent that summarises the issue, identifies the likely blocker and drafts the next action for review.',
-        saving: '15-30 minutes per workflow investigation'
-      };
-    }
-
-    function renderAgentResult(result){
-      var type = document.getElementById('agentType');
-      var priority = document.getElementById('agentPriority');
-      var bottleneck = document.getElementById('agentBottleneck');
-      var steps = document.getElementById('agentSteps');
-      var opportunity = document.getElementById('agentOpportunity');
-      var saving = document.getElementById('agentSaving');
-      if (!type || !priority || !bottleneck || !steps || !opportunity || !saving) return;
-
-      type.textContent = result.type;
-      priority.textContent = result.priority;
-      bottleneck.textContent = result.bottleneck;
-      opportunity.textContent = result.opportunity;
-      saving.textContent = result.saving;
-      steps.innerHTML = '';
-      result.steps.forEach(function(step){
-        var item = document.createElement('li');
-        item.textContent = step;
-        steps.appendChild(item);
-      });
-    }
-
-    function runAgentDemo(){
-      if (!agentInput) return;
-      renderAgentResult(analyseWorkflow(agentInput.value));
-    }
-
-    if (analyseAgentInput){
-      analyseAgentInput.addEventListener('click', runAgentDemo);
-    }
-    sampleAgentButtons.forEach(function(button){
-      button.addEventListener('click', function(){
-        if (!agentInput) return;
-        agentInput.value = agentSamples[button.getAttribute('data-agent-sample')] || agentSamples.order;
-        runAgentDemo();
-      });
-    });
-    runAgentDemo();
   })();
 </script>
 

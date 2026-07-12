@@ -5,13 +5,13 @@ Static multi-page website for Lumen Analytics, an analytics and practical AI sol
 ## Pages
 
 - `index.html` - home page
-- `what-i-solve.html` - data, strategy, and AI solution positioning
-- `services.html` - service offerings
-- `sales-tool.html` - sales analytics tool overview
-- `ai-agents.html` - workflow triage agent demo
-- `how-it-works.html` - process
 - `about.html` - about section
+- `services.html` - service offerings
+- `results-case-studies.html` - results and case studies hub
+- `customer-story-sales-analytics.html` - sales analytics customer story
 - `pricing.html` - pricing packages
+- `sales-tool.html` - work sample: sales analytics tool overview
+- `ai-agents.html` - work sample: workflow triage agent demo
 - `sales_summary_tool/` - browser-only sales summary upload tool
 
 ## Local Preview

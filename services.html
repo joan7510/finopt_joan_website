@@ -62,14 +62,14 @@
     background:var(--teal-signal);
     flex-shrink:0;
   }
-  nav{ display:flex; align-items:center; gap:36px; }
+  nav{ display:flex; align-items:center; gap:20px; }
   nav a{
     text-decoration:none; font-size:14.5px; color:var(--teal-deep);
     opacity:0.78;
   }
   nav a:hover{ opacity:1; }
-  .nav-links{ display:flex; gap:32px; }
-  @media (max-width:780px){ .nav-links{ display:none; } }
+  .nav-links{ display:flex; gap:20px; }
+  @media (max-width:1080px){ .nav-links{ display:none; } }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     background:var(--teal-deep); color:#F7F5F0;
@@ -173,6 +173,29 @@
     font-family:'Fraunces', serif; font-weight:500; font-size:18px; margin:0 0 10px;
   }
   .solution p{ font-size:14.5px; line-height:1.6; opacity:0.7; margin:0; }
+  .work-samples{
+    background:var(--bg-raised);
+    border-top:1px solid var(--cream-line);
+  }
+  .work-sample-card{
+    display:block;
+    text-decoration:none;
+    min-height:210px;
+  }
+  .work-sample-card .mono{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal-signal);
+    margin-bottom:16px;
+  }
+  .work-sample-card strong{
+    display:inline-block;
+    margin-top:20px;
+    color:var(--teal-deep);
+    font-size:14px;
+  }
 
   /* ---------- sales tool ---------- */
   .tool-preview{
@@ -572,15 +595,13 @@
     </a>
     <nav>
       <div class="nav-links">
-        <a href="what-i-solve.html">What I solve</a>
-        <a href="services.html">Services</a>
-        <a href="sales-tool.html">Sales tool</a>
-        <a href="ai-agents.html">AI agents</a>
-        <a href="how-it-works.html">How it works</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="results-case-studies.html">Results/Case Studies</a>
         <a href="pricing.html">Pricing</a>
       </div>
-      <button type="button" class="btn" data-open-contact>Book a free consultation</button>
+      <button type="button" class="btn" data-open-contact>Contact</button>
     </nav>
   </div>
 </header>
@@ -627,6 +648,31 @@
           <h3>Workflow automation</h3>
           <p>Remove repetitive reporting, reconciliation and follow-up tasks so your team's time goes into decisions and customer work, not copying data between systems.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-samples" id="work-samples">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Work samples</p>
+        <h2>Examples of how the services show up in practice</h2>
+        <p class="section-lede">Two focused examples sit under Services: a browser-based sales dashboard and an AI workflow triage agent.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <a class="solution work-sample-card" href="sales-tool.html">
+          <span class="mono">Sales dashboard</span>
+          <h3>Upload sales data and see the story in minutes</h3>
+          <p>A practical dashboard-style tool for summarising category performance, regional movement and sales trends from messy exports.</p>
+          <strong>View work sample</strong>
+        </a>
+        <a class="solution work-sample-card" href="ai-agents.html">
+          <span class="mono">AI agents</span>
+          <h3>Workflow triage for repeat operational bottlenecks</h3>
+          <p>A simple agent experience that reviews messy operational notes, identifies likely blockers and suggests next steps.</p>
+          <strong>View work sample</strong>
+        </a>
       </div>
     </div>
   </section>
